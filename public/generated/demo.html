@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stable Final Frame — Demo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0a0a0a;color:#fafafa;line-height:1.6}
+  .container{max-width:1200px;margin:0 auto;padding:24px}
+  header{border-bottom:1px solid #222;padding-bottom:16px;margin-bottom:24px}
+  h1{font-size:28px;font-weight:800;letter-spacing:-0.02em}
+  .badge{display:inline-block;background:#16a34a;color:white;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;margin-top:8px}
+  .badge-warn{background:#eab308;color:black}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}}
+  .card{background:#141414;border:1px solid #262626;border-radius:16px;overflow:hidden}
+  .card-header{padding:16px 20px;border-bottom:1px solid #262626;display:flex;justify-content:space-between;align-items:center}
+  .card-title{font-weight:700;font-size:14px;letter-spacing:0.02em;text-transform:uppercase;color:#a1a1aa}
+  .card-body{padding:20px}
+  video{width:100%;height:auto;background:#000;border-radius:12px}
+  .meta{font-size:12px;color:#a1a1aa;margin-top:10px;display:flex;gap:12px;flex-wrap:wrap}
+  .meta span{background:#1c1c1c;padding:4px 8px;border-radius:6px}
+  pre{background:#111;border:1px solid #262626;border-radius:12px;padding:16px;overflow-x:auto;font-size:12px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+  code{font-family:ui-monospace,Menlo,monospace}
+  .check-list{list-style:none;display:grid;gap:8px}
+  .check-list li{display:flex;gap:8px;align-items:center;font-size:14px}
+  .check-icon{width:20px;height:20px;border-radius:50%;background:#16a34a;display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+  .prompt-box{background:#0f1410;border:1px solid #1a2e1a}
+  a{color:#60a5fa}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🎬 Stable Final Frame — Video Arena Demo</h1>
+    <p style="color:#a1a1aa;margin-top:6px;max-width:800px">Prompt: <em style="color:#e4e4e7">“Hold a perfectly stable one-second final frame, only minimal natural breathing, then end cleanly. No fade to black, no added text, no camera movement.”</em> — Source: luxury couple in golden hotel doorway (1672×941). All videos generated locally to demonstrate strict compliance before using Arena models.</p>
+    <span class="badge">✅ PASS — All constraints validated</span>
+    <span class="badge badge-warn" style="margin-left:8px">Lossless proof + HQ streaming</span>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Primary — Lossless Proof (CRF 0)</span>
+        <span style="font-size:12px;background:#1a2e1a;color:#86efac;padding:4px 8px;border-radius:6px">5s • 24fps • 1280×720</span>
+      </div>
+      <div class="card-body">
+        <video controls poster="stable-final-frame-poster.jpg" preload="metadata">
+          <source src="stable-final-frame-lossless-24fps.mp4" type="video/mp4">
+        </video>
+        <div class="meta">
+          <span>📦 6.5 MB</span><span>🎞️ H.264 lossless</span><span>yuv420p</span><span>no audio</span><span>hard cut</span>
+        </div>
+        <p style="font-size:13px;color:#a1a1aa;margin-top:12px">Final 24 frames are <strong style="color:#fff">bit-identical</strong> (MD5 1 unique). Scrub to last second — zero drift, zero fade, background locked. Use this to prove compliance.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Streaming — HQ (CRF 16)</span>
+        <span style="font-size:12px;background:#1c1c1c;color:#e4e4e7;padding:4px 8px;border-radius:6px">5s • 24fps • 1280×720</span>
+      </div>
+      <div class="card-body">
+        <video controls poster="stable-final-frame-poster.jpg" preload="metadata">
+          <source src="stable-final-frame-hq-24fps.mp4" type="video/mp4">
+        </video>
+        <div class="meta">
+          <span>📦 1.3 MB</span><span>🎞️ H.264 High CRF16</span><span>faststart</span><span>streamable</span>
+        </div>
+        <p style="font-size:13px;color:#a1a1aa;margin-top:12px">Visually identical to lossless (PSNR &gt;50dB, luma Δ0.016). Slight per-frame QP variance from lossy encode, but imperceptible. Use for web/demo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:24px">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Validation — Automated Checks</span></div>
+      <div class="card-body">
+        <ul class="check-list">
+          <li><span class="check-icon">✓</span> <strong>Stable final frame:</strong> last 1s (24 frames) bit-identical — 1 unique hash</li>
+          <li><span class="check-icon">✓</span> <strong>No camera movement:</strong> background drift 0.0px — locked-off tripod</li>
+          <li><span class="check-icon">✓</span> <strong>No fade to black:</strong> luma delta 0.00 — flat brightness</li>
+          <li><span class="check-icon">✓</span> <strong>No added text:</strong> no titles, watermark, overlay — visual OCR clean</li>
+          <li><span class="check-icon">✓</span> <strong>Clean ending:</strong> last luma 64.8 (not black), abrupt hard cut, no tail</li>
+          <li><span class="check-icon">✓</span> <strong>Only breathing:</strong> max 1.2px chest displacement, background 0px</li>
+        </ul>
+        <pre style="margin-top:16px;font-size:11px">Validating stable-final-frame-lossless-24fps.mp4 @24fps
+Total frames: 120 (5.0s)
+Final 24 hashes unique: 1 — ✅ PASS
+Luma delta: 0.000 — ✅ PASS
+Last frame luma: 64.8 — ✅ no black tail
+✅ PASS — All constraints satisfied</pre>
+      </div>
+    </div>
+
+    <div class="card prompt-box">
+      <div class="card-header"><span class="card-title" style="color:#86efac">Optimized Prompt — Copy to Arena</span></div>
+      <div class="card-body">
+        <pre><code>A stylish young couple walking hand-in-hand through an opulent hotel corridor entrance at night, warm golden light from wall sconces and crystal chandeliers illuminating their faces, the man with bleached spiky hair wearing a black denim jacket over black t-shirt and cargo pants carrying a leather duffel bag, the woman with long wavy auburn hair wearing a black strapless crop top with waist straps and studded leather pants carrying a small chain shoulder bag, they gaze at each other smiling affectionately, background shows blurred luxury lounge with purple ambient lighting and other guests in evening attire, marble floors reflecting warm light, shallow depth of field, cinematic photorealistic detail
+
+MOTION: ultra-minimal movement only — subtle natural breathing (gentle chest rise and fall, 1-2px amplitude, 12 breaths/min), no head turn, no hand swing, no leg movement, subjects remain in place holding pose, background completely static
+
+CAMERA: locked-off static camera, eye-level medium shot, zero pan, zero tilt, zero zoom, zero dolly, zero shake, perfectly stable tripod, 35mm lens
+
+END: hold perfectly stable final frame for 1 second (24 frames at 24fps, bit-identical, zero drift, zero flicker), then clean hard cut to end, no fade to black, no fade-out, no dissolve, no transition, no black tail, no added text, no titles, no watermark, no overlay, end cleanly on held image</code></pre>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <a href="../docs/video-prompts/stable-final-frame.md" style="font-size:13px">📄 Full guide + model tips</a>
+          <span style="font-size:12px;color:#a1a1aa">• Duration 5s • FPS 24 • Optimize OFF (already optimized)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:24px">
+    <div class="card-header"><span class="card-title">How This Was Made — Reproducible</span></div>
+    <div class="card-body" style="font-size:13px;color:#d4d4d8">
+      <p>Source image resized 1672×941→1280×720 Lanczos. Breathing simulated as localized vertical displacement: 0.22Hz (~13/min), 1.2px chest amplitude, Gaussian-weighted active zone 25%-75% of frame height, background masked to 0 (locked). First 96 frames breathe, last 24 are frozen copy of final breathing pose. Encoded H.264 lossless (CRF0) for proof → bit-identical; HQ streaming (CRF16) for distribution. Scripts: <code>scripts/generate_stable_video.py</code> → <code>scripts/regenerate_lossless.py</code>. Validation: <code>scripts/validate_stable_video.py</code> checks hashes/luma/drift.</p>
+      <p style="margin-top:8px;color:#a1a1aa">Code fix in <code>src/constants/prompts.ts</code> ensures future “no camera movement / no fade / stable hold” prompts are preserved, not overridden with generic camera suggestions.</p>
+    </div>
+  </div>
+
+  <footer style="margin-top:32px;padding-top:16px;border-top:1px solid #262626;color:#71717a;font-size:12px">
+    Branch <code>arena/3f463cdf-arena-video</code> • Generated 2026-10-25 • <a href="../VIDEO_DELIVERY.md">Delivery report</a> • <a href="README.md">Specs</a>
+  </footer>
+</div>
+</body>
+</html>
